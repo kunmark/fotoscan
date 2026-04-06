@@ -1,0 +1,166 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3efe4">
+  <title>iPad 条码采集</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Barcode Capture for iPad</p>
+        <h1>图书与零售条码采集</h1>
+        <p class="hero-text">
+          支持蓝牙扫描枪录入 ISBN 与零售条码，自动统计重复数量，保存扫描日期，并导出为 CSV。
+        </p>
+      </div>
+      <div class="hero-stats">
+        <article class="stat-card">
+          <span class="stat-label">总扫描数</span>
+          <strong id="totalScans">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">唯一条码数</span>
+          <strong id="uniqueCodes">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">今天扫描</span>
+          <strong id="todayScans">0</strong>
+        </article>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel capture-panel">
+        <div class="panel-head">
+          <div>
+            <p class="section-tag">采集</p>
+            <h2>开始扫描</h2>
+          </div>
+          <button id="focusButton" class="ghost-button" type="button">聚焦输入框</button>
+        </div>
+
+        <div class="mode-switch" role="tablist" aria-label="扫描模式切换">
+          <button id="keyboardModeButton" class="mode-button active" type="button" aria-pressed="true">键盘扫码</button>
+          <button id="cameraModeButton" class="mode-button" type="button" aria-pressed="false">摄像头扫码</button>
+        </div>
+
+        <form id="scanForm" class="scan-form">
+          <label class="scan-label" for="scanInput">扫描输入</label>
+          <input
+            id="scanInput"
+            class="scan-input"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="使用蓝牙扫描枪扫描，或手动输入后按回车"
+          >
+          <div class="button-row">
+            <button class="primary-button" type="submit">记录本次扫描</button>
+            <button id="demoButton" class="secondary-button" type="button">插入演示数据</button>
+          </div>
+        </form>
+
+        <section id="cameraPanel" class="camera-panel" hidden aria-label="摄像头扫码面板">
+          <div class="camera-frame">
+            <video
+              id="cameraPreview"
+              class="camera-preview"
+              autoplay
+              muted
+              playsinline
+              webkit-playsinline="true"
+            ></video>
+            <div class="camera-overlay" aria-hidden="true">
+              <div class="scan-window"></div>
+            </div>
+          </div>
+          <div class="button-row">
+            <button id="startCameraButton" class="primary-button" type="button">启动摄像头</button>
+            <button id="stopCameraButton" class="ghost-button" type="button" disabled>停止摄像头</button>
+          </div>
+          <div id="cameraStatus" class="camera-status">
+            切换到摄像头模式后，可直接用 iPad 后置摄像头识别条码。
+          </div>
+        </section>
+
+        <div id="scanStatus" class="status-banner" aria-live="polite">
+          等待扫描。建议将扫描枪设置为 HID Keyboard 模式，并追加 Enter。
+        </div>
+
+        <div class="tips">
+          <p>支持类型：ISBN-10、ISBN-13、EAN-8、EAN-13、UPC-A、ITF-14 以及其他常见零售条码。</p>
+          <p>摄像头模式依赖浏览器的 `BarcodeDetector` 能力；如果当前 iPad Safari 不支持，请继续使用蓝牙扫描枪模式。</p>
+          <p>每次扫描都会保存完整时间戳，导出的汇总表会统计重复条码数量。</p>
+        </div>
+      </section>
+
+      <section class="panel summary-panel">
+        <div class="panel-head">
+          <div>
+            <p class="section-tag">汇总</p>
+            <h2>条码数量分类</h2>
+          </div>
+          <div class="button-row compact">
+            <button id="exportRawButton" class="secondary-button" type="button">导出明细 CSV</button>
+            <button id="exportSummaryButton" class="primary-button" type="button">导出汇总 CSV</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>条码</th>
+                <th>类型</th>
+                <th>数量</th>
+                <th>首次扫描</th>
+                <th>最后扫描</th>
+              </tr>
+            </thead>
+            <tbody id="summaryTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel log-panel">
+        <div class="panel-head">
+          <div>
+            <p class="section-tag">明细</p>
+            <h2>最近扫描记录</h2>
+          </div>
+          <button id="clearButton" class="ghost-button danger" type="button">清空全部记录</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>扫描时间</th>
+                <th>扫描日期</th>
+                <th>条码</th>
+                <th>类型</th>
+              </tr>
+            </thead>
+            <tbody id="logTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <template id="emptyStateTemplate">
+    <tr>
+      <td colspan="5" class="empty-state">还没有数据，先扫描一条试试。</td>
+    </tr>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

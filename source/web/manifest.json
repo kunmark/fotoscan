@@ -1,0 +1,11 @@
+﻿{
+  "name": "iPad 条码采集",
+  "short_name": "条码采集",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f4ec",
+  "theme_color": "#f3efe4",
+  "lang": "zh-CN",
+  "description": "使用蓝牙扫描枪采集 ISBN 与零售条码，自动统计数量并导出 CSV。",
+  "icons": []
+}

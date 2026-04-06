@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3010000000000000001 /* BarcodeCaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000001 /* BarcodeCaptureApp.swift */; };
+		A1B2C3010000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000002 /* ContentView.swift */; };
+		A1B2C3010000000000000003 /* ScanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000003 /* ScanStore.swift */; };
+		A1B2C3010000000000000004 /* ScannerInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000004 /* ScannerInputField.swift */; };
+		A1B2C3010000000000000005 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000005 /* ShareSheet.swift */; };
+		A1B2C3010000000000000006 /* CameraScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000006 /* CameraScannerView.swift */; };
+		A1B2C3010000000000000007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000007 /* Assets.xcassets */; };
+		A1B2C3010000000000000008 /* BarcodeLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3020000000000000008 /* BarcodeLogicTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1B2C30B0000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3060000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3050000000000000001;
+			remoteInfo = BarcodeCaptureApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A1B2C3020000000000000000 /* BarcodeCaptureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarcodeCaptureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3020000000000000001 /* BarcodeCaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCaptureApp.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000003 /* ScanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStore.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000004 /* ScannerInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerInputField.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000005 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000006 /* CameraScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScannerView.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3020000000000000008 /* BarcodeLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeLogicTests.swift; sourceTree = "<group>"; };
+		A1B2C3020000000000000009 /* BarcodeCaptureAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarcodeCaptureAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3030000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3030000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B2C3040000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3040000000000000002 /* BarcodeCaptureApp */,
+				A1B2C3040000000000000004 /* BarcodeCaptureAppTests */,
+				A1B2C3040000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3040000000000000002 /* BarcodeCaptureApp */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3020000000000000001 /* BarcodeCaptureApp.swift */,
+				A1B2C3020000000000000002 /* ContentView.swift */,
+				A1B2C3020000000000000003 /* ScanStore.swift */,
+				A1B2C3020000000000000004 /* ScannerInputField.swift */,
+				A1B2C3020000000000000005 /* ShareSheet.swift */,
+				A1B2C3020000000000000006 /* CameraScannerView.swift */,
+				A1B2C3020000000000000007 /* Assets.xcassets */,
+			);
+			path = BarcodeCaptureApp;
+			sourceTree = "<group>";
+		};
+		A1B2C3040000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3020000000000000000 /* BarcodeCaptureApp.app */,
+				A1B2C3020000000000000009 /* BarcodeCaptureAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B2C3040000000000000004 /* BarcodeCaptureAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3020000000000000008 /* BarcodeLogicTests.swift */,
+			);
+			path = BarcodeCaptureAppTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3050000000000000001 /* BarcodeCaptureApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3070000000000000002 /* Build configuration list for PBXNativeTarget "BarcodeCaptureApp" */;
+			buildPhases = (
+				A1B2C3080000000000000001 /* Sources */,
+				A1B2C3030000000000000001 /* Frameworks */,
+				A1B2C3090000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BarcodeCaptureApp;
+			productName = BarcodeCaptureApp;
+			productReference = A1B2C3020000000000000000 /* BarcodeCaptureApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1B2C3050000000000000002 /* BarcodeCaptureAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3070000000000000003 /* Build configuration list for PBXNativeTarget "BarcodeCaptureAppTests" */;
+			buildPhases = (
+				A1B2C3080000000000000002 /* Sources */,
+				A1B2C3030000000000000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C30C0000000000000001 /* PBXTargetDependency */,
+			);
+			name = BarcodeCaptureAppTests;
+			productName = BarcodeCaptureAppTests;
+			productReference = A1B2C3020000000000000009 /* BarcodeCaptureAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3060000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A1B2C3050000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A1B2C3050000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A1B2C3050000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3070000000000000001 /* Build configuration list for PBXProject "BarcodeCaptureApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3040000000000000001;
+			productRefGroup = A1B2C3040000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3050000000000000001 /* BarcodeCaptureApp */,
+				A1B2C3050000000000000002 /* BarcodeCaptureAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3090000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3010000000000000007 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3080000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3010000000000000001 /* BarcodeCaptureApp.swift in Sources */,
+				A1B2C3010000000000000002 /* ContentView.swift in Sources */,
+				A1B2C3010000000000000003 /* ScanStore.swift in Sources */,
+				A1B2C3010000000000000004 /* ScannerInputField.swift in Sources */,
+				A1B2C3010000000000000005 /* ShareSheet.swift in Sources */,
+				A1B2C3010000000000000006 /* CameraScannerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3080000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3010000000000000008 /* BarcodeLogicTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C30C0000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1B2C3050000000000000001 /* BarcodeCaptureApp */;
+			targetProxy = A1B2C30B0000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C30A0000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1B2C30A0000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A1B2C30A0000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Barcode Capture";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan book and retail barcodes.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kunma.BarcodeCaptureApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		A1B2C30A0000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Barcode Capture";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan book and retail barcodes.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kunma.BarcodeCaptureApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		A1B2C30D0000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kunma.BarcodeCaptureAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BarcodeCaptureApp.app/BarcodeCaptureApp";
+			};
+			name = Debug;
+		};
+		A1B2C30D0000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kunma.BarcodeCaptureAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BarcodeCaptureApp.app/BarcodeCaptureApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3070000000000000001 /* Build configuration list for PBXProject "BarcodeCaptureApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C30A0000000000000001 /* Debug */,
+				A1B2C30A0000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3070000000000000002 /* Build configuration list for PBXNativeTarget "BarcodeCaptureApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C30A0000000000000003 /* Debug */,
+				A1B2C30A0000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3070000000000000003 /* Build configuration list for PBXNativeTarget "BarcodeCaptureAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C30D0000000000000001 /* Debug */,
+				A1B2C30D0000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B2C3060000000000000001 /* Project object */;
+}
