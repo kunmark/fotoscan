@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Xcode user data
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+xcuserdata/
+
+# Build output
+build/
+DerivedData/
+*.ipa
+*.xcarchive
+
+# Signing material
+*.p12
+*.mobileprovision
+*.cer
+*.key
+
+# Local environment files
+.env
+.env.*
+
+# Logs
+*.log

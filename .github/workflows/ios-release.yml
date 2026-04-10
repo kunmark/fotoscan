@@ -1,0 +1,85 @@
+name: iOS Signed Archive
+
+on:
+  workflow_dispatch:
+
+jobs:
+  archive-ios:
+    runs-on: macos-latest
+
+    env:
+      PROJECT_PATH: source/native-ios/BarcodeCaptureApp.xcodeproj
+      SCHEME: BarcodeCaptureApp
+      ARCHIVE_PATH: ${{ github.workspace }}/build/BarcodeCaptureApp.xcarchive
+      EXPORT_PATH: ${{ github.workspace }}/build/export
+      EXPORT_OPTIONS_PLIST: ${{ github.workspace }}/deploy/native-ios/ExportOptions.plist
+      KEYCHAIN_PASSWORD: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
+      P12_PASSWORD: ${{ secrets.IOS_P12_PASSWORD }}
+      BUILD_CERTIFICATE_BASE64: ${{ secrets.IOS_BUILD_CERTIFICATE_BASE64 }}
+      BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.IOS_BUILD_PROVISION_PROFILE_BASE64 }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Prepare build directories
+        run: mkdir -p "$RUNNER_TEMP/certs" "$RUNNER_TEMP/profiles" build
+
+      - name: Decode signing certificate
+        run: echo "$BUILD_CERTIFICATE_BASE64" | base64 --decode > "$RUNNER_TEMP/certs/build_certificate.p12"
+
+      - name: Decode provisioning profile
+        run: echo "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode > "$RUNNER_TEMP/profiles/profile.mobileprovision"
+
+      - name: Create temporary keychain
+        run: |
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$RUNNER_TEMP/app-signing.keychain-db"
+          security set-keychain-settings -lut 21600 "$RUNNER_TEMP/app-signing.keychain-db"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$RUNNER_TEMP/app-signing.keychain-db"
+          security import "$RUNNER_TEMP/certs/build_certificate.p12" \
+            -P "$P12_PASSWORD" \
+            -A \
+            -t cert \
+            -f pkcs12 \
+            -k "$RUNNER_TEMP/app-signing.keychain-db"
+          security list-keychain -d user -s "$RUNNER_TEMP/app-signing.keychain-db"
+
+      - name: Install provisioning profile
+        run: |
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          cp "$RUNNER_TEMP/profiles/profile.mobileprovision" \
+            "$HOME/Library/MobileDevice/Provisioning Profiles/"
+
+      - name: Resolve Swift packages if any
+        run: |
+          xcodebuild \
+            -project "$PROJECT_PATH" \
+            -scheme "$SCHEME" \
+            -resolvePackageDependencies
+
+      - name: Build archive
+        run: |
+          xcodebuild \
+            -project "$PROJECT_PATH" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -archivePath "$ARCHIVE_PATH" \
+            archive
+
+      - name: Export IPA
+        run: |
+          xcodebuild \
+            -exportArchive \
+            -archivePath "$ARCHIVE_PATH" \
+            -exportPath "$EXPORT_PATH" \
+            -exportOptionsPlist "$EXPORT_OPTIONS_PLIST"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-signed-build
+          path: build

@@ -1,0 +1,80 @@
+name: iOS Build Check
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - ".github/workflows/ios-build.yml"
+      - "source/native-ios/**"
+  pull_request:
+    paths:
+      - ".github/workflows/ios-build.yml"
+      - "source/native-ios/**"
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    env:
+      PROJECT_PATH: source/native-ios/BarcodeCaptureApp.xcodeproj
+      SCHEME: BarcodeCaptureApp
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: List available simulators
+        run: xcrun simctl list devices available
+
+      - name: Resolve Swift packages if any
+        run: |
+          xcodebuild \
+            -project "$PROJECT_PATH" \
+            -scheme "$SCHEME" \
+            -resolvePackageDependencies
+
+      - name: Select an available iPad simulator
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available | grep "iPad" | head -n 1 | grep -Eo '[A-Fa-f0-9-]{36}' | head -n 1)
+          if [ -z "$DEVICE_ID" ]; then
+            echo "No available iPad simulator was found on this runner."
+            exit 1
+          fi
+          echo "SIMULATOR_ID=$DEVICE_ID" >> "$GITHUB_ENV"
+          echo "Selected simulator id: $DEVICE_ID"
+
+      - name: Build for iOS Simulator without code signing
+        run: |
+          xcodebuild \
+            -project "$PROJECT_PATH" \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "generic/platform=iOS Simulator" \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Run XCTest on selected iPad simulator
+        run: |
+          mkdir -p build
+          xcodebuild \
+            -project "$PROJECT_PATH" \
+            -scheme "$SCHEME" \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "id=$SIMULATOR_ID" \
+            -resultBundlePath build/TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            clean test
+
+      - name: Upload XCTest result bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-xctest-results
+          path: build/TestResults.xcresult
