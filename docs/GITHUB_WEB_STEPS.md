@@ -25,7 +25,7 @@ Use one of these:
 
 This package is prepared for this repository:
 
-- `https://github.com/kunmark/fotoscan`
+- `https://github.com/kunmark/fotoscan.git`
 
 After pushing, refresh the GitHub repository page and confirm the files appear.
 
